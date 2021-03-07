@@ -1,21 +1,28 @@
 h1, h2, h3 { font-family: 'Verdana';}
 
-
-ul {
-    
+ul li {
     list-style-type: none;
-    display: flex;
-    align-items: left;
 }
 
+#timer, #score {
+background-color: rgb(221, 5, 59) ;
+color:rgb(205, 225, 228);
+border: none;
+width: 50px;
+padding: 12px 22px;
+margin: 12px 0;
+text-align: center;
+display: block;
+font-size: 15px;
 
+}
 
 li .button {
 background-color: rgb(221, 5, 59) ;
 color:rgb(205, 225, 228);
-text-decoration: none;
 border: none;
 padding: 12px 22px;
+margin: 12px 0;
 text-align: center;
 display: block;
 font-size: 15px;

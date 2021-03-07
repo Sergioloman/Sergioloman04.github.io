@@ -5,37 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/stylesheet.css">
-    <title>Web Quiz</title>
+    <title>Web Quiz #1</title>
 </head>
 <body>
 <header>
     <h1>This is a Quiz</h1>
+    <p id="timer">30</p>
 </header>
 <main>
-    <section id="quiz-question">
-        <h2>Is this a question</h2>
+    <section >
+        <h2 id="quiz-question"></h2>
     </section>
     
-    <ul id="quiz-options">
-        <li class="options">
-            <button class='button'>This is option 1</button>
+    <ul>
+        <li >
+            <button class='button'></button>
         </li>
-        <li class="options">
-            <button class='button'>This is option 1</button>
+        <li>
+            <button class='button'></button>
         </li>
-        <li class="options">
-            <button class='button'>This is option 1</button>
+        <li>
+            <button class='button'></button>
         </li>
-        <li class="options">
-            <button class='button'>This is option 1</button>
+        <li>
+            <button class='button'></button>
         </li>
     </ul>
-    <section id="result">
+    
+    <section>
         <h3>This is your result</h3>
-        <div class="answers"></div>
+        <div id="answer"></div>
     </section>
 
 </main>
+<footer>
+    <p id="score">0</p>
+</footer>
 <script src="./assets/javascript.js"></script>
 </body>
 </html>
