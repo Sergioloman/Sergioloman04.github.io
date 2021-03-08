@@ -1,6 +1,7 @@
 //variables
 var timer = 5;
 var currentQuestionIndex  =0;
+
 var quizScreen = document.querySelector('#quiz-screen');
 var startScreen = document.querySelector('#start-screen');
 var endScreen = document.querySelector('#end-screen');
@@ -10,8 +11,6 @@ var quizTimerScreen = document.querySelector('#timer-screen');
 
 var startQuizButton = document.querySelector('#start-button');
 var replayQuizButton = document.querySelector('#replay-button');
-
-
 
 //arrays
 var quizQuestions = [{
@@ -40,8 +39,6 @@ function startQuiz(){
     quizTimerScreen.removeAttribute('class','hide');
     countdownTimer();
     getQuestions();
-  
-    
 };
 
 function countdownTimer() {
@@ -55,9 +52,7 @@ function countdownTimer() {
             quizEnd()
         };
     }, 1000); 
-    
 };
-
 
 function getQuestions(){
 
@@ -68,11 +63,11 @@ function getQuestions(){
         var questionTitle = document.querySelector('.question-title');
         questionTitle.textContent= currentQuestion.Title;
     
-        var questionOptions = document.querySelector('.options');
-        
-        document.createElement('button');
-    
-    };
+        //var questionOptions = document.querySelector('.options');
+
+
+        // var userAnswer =       
+    }
 
     
     // var questionOptions = document.querySelector('.options');
@@ -90,13 +85,15 @@ function getQuestions(){
 
 function OptionClick(){
     console.log("this is the user's answer");
+    //if right answer, time + 5 seconds + prompt ( you got the right answer!)
+    //if wrong answer, time -5 seconds + promt ( WRONG!)
+    //when click, move +1 in index.
 };
 
 function quizEnd(){
     endScreen.removeAttribute('class','hide');
     quizScreen.setAttribute('class','hide');
-    replayQuizButton.addEventListener('click',startQuiz);
-
+    quizTimerScreen.setAttribute('class','hide');
 };
 
 
