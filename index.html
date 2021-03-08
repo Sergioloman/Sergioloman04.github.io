@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class='hide' id='timer-screen'>
-    <p id="timer">15</p>
+    <p id="timer">5</p>
     <!--enable button that allows someone to go straight to high scores-->
 </header>
 <main>
@@ -20,14 +20,16 @@
     </section>
     
     <section class='hide' id='quiz-screen'>
-        <h2 class='question-title'>Question Tittle</h2>
-        <div class='question-options'></div> 
+        <h2 class='question-title'></h2>
+        <div class='options' id='question-options'></div> 
     </section>
     
     <section  class='hide' id='end-screen'>
         <h2>You have completed the quiz</h2>
-        <p>Here is your final score</p>
-        <p id="score">0</p>
+        <p>Enter your innitials</p>
+        <input type='text' placeholder='AB'>
+        <button id='submit'>Submit</button>
+        <button id='replay-button' >Play again!</button>
         <!--enable a way to submit scores usign a form/input-->
     </section>
 </main>

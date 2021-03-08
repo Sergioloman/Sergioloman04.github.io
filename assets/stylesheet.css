@@ -14,20 +14,20 @@ font-size: 15px;
 
 }
 
-.button {
-background-color: rgb(221, 5, 59) ;
-color:rgb(205, 225, 228);
-border: none;
-padding: 12px 22px;
-margin: 12px 0;
-text-align: center;
-display: block;
-font-size: 15px;
 
-}
 
 .hide{
     display:none;
 }
 
+.options, .question-title {
+    background-color: rgb(221, 5, 59) ;
+    color:rgb(205, 225, 228);
+    border: none;
+    padding: 12px 22px;
+    margin: 12px 0;
+    text-align: center;
+    display: block;
+    font-size: 15px;
+}
 
