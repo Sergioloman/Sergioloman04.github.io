@@ -8,39 +8,30 @@
     <title>Web Quiz #1</title>
 </head>
 <body>
-<header>
-    <h1>This is a Quiz</h1>
+<header class='hide' id='timer-screen'>
     <p id="timer">30</p>
+    <!--enable button that allows someone to go straight to high scores-->
 </header>
 <main>
-    <section >
-        <h2 id="quiz-question"></h2>
+    <section id='start-screen' >
+        <h1>This is a Quiz</h1>
+        <h2>Are you ready to take the quiz?</h2>
+        <button id='start-button'>Get Started!</button>
+    </section class='hide' id="quiz-question">
+    
+    <section class='hide' id='quiz-screen'>
+        <h2 class='question-title'>Question Tittle</h2>
+        <div class='question-options'></div> 
     </section>
     
-    <ul>
-        <li >
-            <button class='button'></button>
-        </li>
-        <li>
-            <button class='button'></button>
-        </li>
-        <li>
-            <button class='button'></button>
-        </li>
-        <li>
-            <button class='button'></button>
-        </li>
-    </ul>
-    
-    <section>
-        <h3>This is your result</h3>
-        <div id="answer"></div>
+    <section  class='hide' id='end-screen'>
+        <h2>You have completed the quiz</h2>
+        <p>Here is your final score</p>
+        <p id="score">0</p>
+        <!--enable a way to submit scores usign a form/input-->
     </section>
-
 </main>
-<footer>
-    <p id="score">0</p>
-</footer>
+    
 <script src="./assets/javascript.js"></script>
 </body>
 </html>
