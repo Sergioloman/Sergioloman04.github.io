@@ -1,6 +1,6 @@
 //variables
-var timer = 5;
-var currentQuestionIndex  =0;
+var timer = 25;
+var currentQuestionIndex = 0;
 
 var quizScreen = document.querySelector('#quiz-screen');
 var startScreen = document.querySelector('#start-screen');
@@ -22,7 +22,7 @@ var quizQuestions = [{
     Title: "Which method allows you to select an item in your html file",
     Options: [".querySelector", ".addTo", ".setInterval", ".setHTML"],
     Answer: ".querySelector",
-}, 
+},
 {
     Title: "Choose the most appropiate way to declare two statements are identical to each other",
     Options: ["=", "!=", "<=>", "==="],
@@ -30,13 +30,13 @@ var quizQuestions = [{
 
 }];
 //event listeners
-startQuizButton.addEventListener('click',startQuiz);
+startQuizButton.addEventListener('click', startQuiz);
 
 //functions
-function startQuiz(){
-    startScreen.setAttribute('class','hide');
-    quizScreen.removeAttribute('class','hide');
-    quizTimerScreen.removeAttribute('class','hide');
+function startQuiz() {
+    startScreen.setAttribute('class', 'hide');
+    quizScreen.removeAttribute('class', 'hide');
+    quizTimerScreen.removeAttribute('class', 'hide');
     countdownTimer();
     getQuestions();
 };
@@ -51,49 +51,46 @@ function countdownTimer() {
             clearInterval(decreaseTime);
             quizEnd()
         };
-    }, 1000); 
+    }, 1000);
 };
 
-function getQuestions(){
+function getQuestions() {
 
-    for ( i=0; i< quizQuestions.length; i++){
-        
+    // for (i = 0; i < quizQuestions.length; i++) {
+
         var currentQuestion = quizQuestions[currentQuestionIndex];
-    
+
         var questionTitle = document.querySelector('.question-title');
-        questionTitle.textContent= currentQuestion.Title;
-    
-        //var questionOptions = document.querySelector('.options');
+        questionTitle.textContent = currentQuestion.Title;
+        console.log(currentQuestion.Title);
 
-
-        // var userAnswer =       
-    }
-
-    
-    // var questionOptions = document.querySelector('.options');
-    // questionOptions.textContent="";
-
-    // currentQuestion.Options.forEach(function(Options,i){
-    //     var Opt =document.createElement('button');
-    //     Opt.setAttribute('value',Options);
-    //     Opt.textContent = i + 1+ "."+ Options;
-    //     Opt.onclick = OptionClick;
-    // })
-
-     };
+        
+        var questionOptions= document.querySelector ('.options');
+        
+        questionOptions.innerHTML = "";
  
-
-function OptionClick(){
-    console.log("this is the user's answer");
-    //if right answer, time + 5 seconds + prompt ( you got the right answer!)
-    //if wrong answer, time -5 seconds + promt ( WRONG!)
-    //when click, move +1 in index.
+        currentQuestion.Options.forEach(function(option){
+            var qContent = document.createElement('button');
+            qContent.setAttribute('class','option');
+            qContent.setAttribute('value',option)
+            qContent.textContent= option;
+            qContent.onclick= OptionClick;
+            questionOptions.appendChild(qContent);
+        })
+        
 };
 
-function quizEnd(){
-    endScreen.removeAttribute('class','hide');
-    quizScreen.setAttribute('class','hide');
-    quizTimerScreen.setAttribute('class','hide');
+
+function OptionClick() {
+    console.log("this is the user's answer");
+    currentQuestionIndex++;
+    getQuestions();
+};
+
+function quizEnd() {
+    endScreen.removeAttribute('class', 'hide');
+    quizScreen.setAttribute('class', 'hide');
+    quizTimerScreen.setAttribute('class', 'hide');
 };
 
 
