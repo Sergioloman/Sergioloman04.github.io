@@ -1,6 +1,7 @@
 //variables
 var timer = 25;
 var currentQuestionIndex = 0;
+var clock;
 
 var quizScreen = document.querySelector('#quiz-screen');
 var startScreen = document.querySelector('#start-screen');
@@ -34,37 +35,40 @@ startQuizButton.addEventListener('click', startQuiz);
 
 //functions
 function startQuiz() {
+
+    // var timer = 25;
+    // var currentQuestionIndex = 0;
+    // var clock;
+
     startScreen.setAttribute('class', 'hide');
     quizScreen.removeAttribute('class', 'hide');
     quizTimerScreen.removeAttribute('class', 'hide');
-    countdownTimer();
+    endScreen.setAttribute('class','hide');
+    clock = setInterval(countdownTimer,1000);
     getQuestions();
+
 };
 
 function countdownTimer() {
-    var decreaseTime = setInterval(function () {
-        if (timer > 0) {
+    
             timer--;
             quizTimerUpdate.textContent = timer;
-        } else {
+        
+        if(timer <= 0){
             quizTimerUpdate.textContent = 'Time is up!';
-            clearInterval(decreaseTime);
             quizEnd()
-        };
-    }, 1000);
-};
+        }    
+    };
 
 function getQuestions() {
 
-    // for (i = 0; i < quizQuestions.length; i++) {
-
         var currentQuestion = quizQuestions[currentQuestionIndex];
-
+        console.log(currentQuestion);
         var questionTitle = document.querySelector('.question-title');
         questionTitle.textContent = currentQuestion.Title;
+
         console.log(currentQuestion.Title);
 
-        
         var questionOptions= document.querySelector ('.options');
         
         questionOptions.innerHTML = "";
@@ -77,20 +81,39 @@ function getQuestions() {
             qContent.onclick= OptionClick;
             questionOptions.appendChild(qContent);
         })
-        
-};
+    
+    };
 
 
 function OptionClick() {
-    console.log("this is the user's answer");
+    
+    if(this.value === quizQuestions[currentQuestionIndex].Answer){
+        console.log('correct!');
+        timer += 5;
+    }else{
+        console.log('wrong!');
+        timer -= 5;
+    }
+
+    //console.log(this.value);
+
+    // console.log("this is the user's answer");
     currentQuestionIndex++;
-    getQuestions();
+    if(currentQuestionIndex === quizQuestions.length){
+        quizEnd();
+    }else{ 
+       getQuestions(); 
+    }
 };
 
 function quizEnd() {
     endScreen.removeAttribute('class', 'hide');
     quizScreen.setAttribute('class', 'hide');
-    quizTimerScreen.setAttribute('class', 'hide');
+    //quizTimerScreen.setAttribute('class', 'hide');
+    
+    clearInterval(clock);
+    currentQuestionIndex=0;  
+    
 };
 
-
+replayQuizButton.addEventListener('click',startQuiz);
