@@ -34,26 +34,18 @@ var quizQuestions = [{
 startQuizButton.addEventListener('click', startQuiz);
 
 //functions
-function startQuiz() {
-
-    // var timer = 25;
-    // var currentQuestionIndex = 0;
-    // var clock;
-
+function startQuiz() { 
     startScreen.setAttribute('class', 'hide');
     quizScreen.removeAttribute('class', 'hide');
     quizTimerScreen.removeAttribute('class', 'hide');
     endScreen.setAttribute('class','hide');
     clock = setInterval(countdownTimer,1000);
     getQuestions();
-
 };
 
 function countdownTimer() {
-    
             timer--;
             quizTimerUpdate.textContent = timer;
-        
         if(timer <= 0){
             quizTimerUpdate.textContent = 'Time is up!';
             quizEnd()
@@ -61,18 +53,13 @@ function countdownTimer() {
     };
 
 function getQuestions() {
-
         var currentQuestion = quizQuestions[currentQuestionIndex];
         console.log(currentQuestion);
         var questionTitle = document.querySelector('.question-title');
         questionTitle.textContent = currentQuestion.Title;
-
         console.log(currentQuestion.Title);
-
         var questionOptions= document.querySelector ('.options');
-        
         questionOptions.innerHTML = "";
- 
         currentQuestion.Options.forEach(function(option){
             var qContent = document.createElement('button');
             qContent.setAttribute('class','option');
@@ -81,12 +68,9 @@ function getQuestions() {
             qContent.onclick= OptionClick;
             questionOptions.appendChild(qContent);
         })
-    
     };
 
-
-function OptionClick() {
-    
+function OptionClick() {    
     if(this.value === quizQuestions[currentQuestionIndex].Answer){
         console.log('correct!');
         timer += 5;
@@ -94,10 +78,6 @@ function OptionClick() {
         console.log('wrong!');
         timer -= 5;
     }
-
-    //console.log(this.value);
-
-    // console.log("this is the user's answer");
     currentQuestionIndex++;
     if(currentQuestionIndex === quizQuestions.length){
         quizEnd();
@@ -109,11 +89,8 @@ function OptionClick() {
 function quizEnd() {
     endScreen.removeAttribute('class', 'hide');
     quizScreen.setAttribute('class', 'hide');
-    //quizTimerScreen.setAttribute('class', 'hide');
-    
     clearInterval(clock);
     currentQuestionIndex=0;  
-    
 };
 
 replayQuizButton.addEventListener('click',startQuiz);
