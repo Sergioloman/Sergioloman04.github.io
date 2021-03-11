@@ -27,12 +27,22 @@
     
     <section  class='hide' id='end-screen'>
         <h2>You have completed the quiz</h2>
-        <p>Enter your innitials</p>
-        <input type='text' placeholder='AB'>
+        <p>Your score is <span id="player-score"></span> seconds</p>
+        <br>
+        <h3>Enter your innitials</h3>
+        <input id='innitials' type='text' placeholder='Your innitials'>
         <button id='submit'>Submit</button>
         <button id='replay-button' >Play again!</button>
+        <h2>Previous High Scores</h2>
+        <h3>Player</h3>
+        <div id="last-player-innitials"></div>
+        <h3>Previous Score</h3>
+        <div id="last-high-score"></div>
+        
         
     </section>
+
+   
 </main>
     
 <script src="./assets/javascript.js"></script>

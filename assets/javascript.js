@@ -1,5 +1,5 @@
 //variables
-var timer = 25;
+var timer;
 var currentQuestionIndex = 0;
 var clock;
 
@@ -12,6 +12,9 @@ var quizTimerScreen = document.querySelector('#timer-screen');
 
 var startQuizButton = document.querySelector('#start-button');
 var replayQuizButton = document.querySelector('#replay-button');
+
+
+var submitScore = document.querySelector('#submit')
 
 //arrays
 var quizQuestions = [{
@@ -29,7 +32,25 @@ var quizQuestions = [{
     Options: ["=", "!=", "<=>", "==="],
     Answer: "===",
 
-}];
+},
+{
+    Title: "What does API stands for?",
+    Options: ["Application Programing Interface","Applied Programs Interexchange","Appliying Programing to the Internet ","As Program Intents"],
+    Answer: "Application Programing Interface",
+},
+{
+    Title: "What symbol do we use to call back functions?",
+    Options: [" # "," $() "," () "," @() "],
+    Answer: " () ",
+},
+{
+    Title: "Choose the statement that most resembles the definition of 'boolean' ",
+    Options: [" if/or "," while/else "," true/false "," valid/invalid "],
+    Answer: " true/false ",
+},
+
+
+];
 //event listeners
 startQuizButton.addEventListener('click', startQuiz);
 
@@ -39,8 +60,11 @@ function startQuiz() {
     quizScreen.removeAttribute('class', 'hide');
     quizTimerScreen.removeAttribute('class', 'hide');
     endScreen.setAttribute('class','hide');
+    timer = 25;
     clock = setInterval(countdownTimer,1000);
     getQuestions();
+
+
 };
 
 function countdownTimer() {
@@ -73,9 +97,11 @@ function getQuestions() {
 function OptionClick() {    
     if(this.value === quizQuestions[currentQuestionIndex].Answer){
         console.log('correct!');
+        alert("Nice! +5 seconds to the timer! ");
         timer += 5;
     }else{
         console.log('wrong!');
+        alert("Wrong! -5 seconds to the timer")
         timer -= 5;
     }
     currentQuestionIndex++;
@@ -90,7 +116,30 @@ function quizEnd() {
     endScreen.removeAttribute('class', 'hide');
     quizScreen.setAttribute('class', 'hide');
     clearInterval(clock);
-    currentQuestionIndex=0;  
+    currentQuestionIndex=0; 
+    quizTimerUpdate.textContent = 'Time is up!'; 
+    console.log(timer); 
+
+    var highScore = document.querySelector('#player-score')
+    highScore.textContent= timer;
 };
 
+
+
+submitScore.addEventListener('click',function(event){
+    event.preventDefault();
+
+    var innitials = document.querySelector('#innitials').value;
+
+    if(innitials === ''){
+        alert('error! Innitials cannot be blank');
+    }else{
+        alert('success! You have entered the scoreboard!');
+    };
+
+    localStorage.setItem('innitials', innitials);
+    
+});
+
 replayQuizButton.addEventListener('click',startQuiz);
+
