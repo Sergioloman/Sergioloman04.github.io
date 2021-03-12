@@ -102,6 +102,7 @@ function OptionClick() {
         //alert("Nice! +5 seconds to the timer! ");
         displayAnswer.textContent = "Nice! +5 seconds to the timer!";
         resultHandler()
+        displayAnswer.removeAttribute('class','hide');
         timer += 5;
         console.log(timer);
     }else{
@@ -109,7 +110,8 @@ function OptionClick() {
         console.log('wrong!');
         //alert("Wrong! -5 seconds to the timer")
         displayAnswer.textContent = "Wrong! -5 seconds to the timer";
-        resultHandler()
+        resultHandler();
+        displayAnswer.removeAttribute('class','hide');
         timer -= 5;
         console.log(timer);
     };
@@ -124,7 +126,7 @@ function OptionClick() {
   
 //how to enable resultTimer each time we call back get questions?
 function resultHandler(){ 
-    setTimeout(function(){displayAnswer.setAttribute('class','hide')},3000);
+    setTimeout(function(){displayAnswer.setAttribute('class','hide')},1500);
     clearTimeout();
 };
 
