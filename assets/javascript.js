@@ -95,18 +95,31 @@ function getQuestions() {
         })
     };
 
+function displayResult(){
+    
+     displayAnswer.setAttribute('class','hide')
+    }
+    
+
 function OptionClick() {    
     if(this.value === quizQuestions[currentQuestionIndex].Answer){
         console.log('correct!');
         //alert("Nice! +5 seconds to the timer! ");
         displayAnswer.textContent = "Nice! +5 seconds to the timer!";
+        setInterval(displayResult,2000);
+        // clearInterval();
         timer += 5;
+        console.log(timer);
     }else{
         console.log('wrong!');
         //alert("Wrong! -5 seconds to the timer")
-        displayAnswer.textContent = "Wrong! -5 seconds to the timer";
+         displayAnswer.textContent = "Wrong! -5 seconds to the timer";
+         setInterval(displayResult,2000);
+        // clearInterval();
         timer -= 5;
-    }
+        console.log(timer);
+    };
+    clearInterval();
     currentQuestionIndex++;
     if(currentQuestionIndex === quizQuestions.length){
         quizEnd();
@@ -132,7 +145,6 @@ function quizEnd() {
     var lastPlayer = document.querySelector('#last-high-score');
     lastPlayer.textContent= localStorage.getItem('last-score', timer);
 };
-
 
 
 submitScore.addEventListener('click',function(event){
