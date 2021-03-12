@@ -13,6 +13,7 @@ var quizTimerScreen = document.querySelector('#timer-screen');
 var startQuizButton = document.querySelector('#start-button');
 var replayQuizButton = document.querySelector('#replay-button');
 
+var displayAnswer = document.querySelector('#question-answers');
 
 var submitScore = document.querySelector('#submit')
 
@@ -97,11 +98,13 @@ function getQuestions() {
 function OptionClick() {    
     if(this.value === quizQuestions[currentQuestionIndex].Answer){
         console.log('correct!');
-        alert("Nice! +5 seconds to the timer! ");
+        //alert("Nice! +5 seconds to the timer! ");
+        displayAnswer.textContent = "Nice! +5 seconds to the timer!";
         timer += 5;
     }else{
         console.log('wrong!');
-        alert("Wrong! -5 seconds to the timer")
+        //alert("Wrong! -5 seconds to the timer")
+        displayAnswer.textContent = "Wrong! -5 seconds to the timer";
         timer -= 5;
     }
     currentQuestionIndex++;
