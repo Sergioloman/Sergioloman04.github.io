@@ -122,6 +122,12 @@ function quizEnd() {
 
     var highScore = document.querySelector('#player-score')
     highScore.textContent= timer;
+
+    var lastScore = document.querySelector('#last-player-innitials');
+    lastScore.textContent = localStorage.getItem('player-innitials', innitials);
+
+    var lastPlayer = document.querySelector('#last-high-score');
+    lastPlayer.textContent= localStorage.getItem('last-score', timer);
 };
 
 
@@ -135,10 +141,9 @@ submitScore.addEventListener('click',function(event){
         alert('error! Innitials cannot be blank');
     }else{
         alert('success! You have entered the scoreboard!');
+        localStorage.setItem('player-innitials', innitials);
+        localStorage.setItem('last-score',timer);
     };
-
-    localStorage.setItem('innitials', innitials);
-    
 });
 
 replayQuizButton.addEventListener('click',startQuiz);
