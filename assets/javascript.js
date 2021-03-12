@@ -94,38 +94,38 @@ function getQuestions() {
             questionOptions.appendChild(qContent);
         })
     };
-
-function displayResult(){
     
-     displayAnswer.setAttribute('class','hide')
-    }
-    
-
 function OptionClick() {    
     if(this.value === quizQuestions[currentQuestionIndex].Answer){
+        
         console.log('correct!');
         //alert("Nice! +5 seconds to the timer! ");
         displayAnswer.textContent = "Nice! +5 seconds to the timer!";
-        setInterval(displayResult,2000);
-        // clearInterval();
+        resultHandler()
         timer += 5;
         console.log(timer);
     }else{
+        
         console.log('wrong!');
         //alert("Wrong! -5 seconds to the timer")
-         displayAnswer.textContent = "Wrong! -5 seconds to the timer";
-         setInterval(displayResult,2000);
-        // clearInterval();
+        displayAnswer.textContent = "Wrong! -5 seconds to the timer";
+        resultHandler()
         timer -= 5;
         console.log(timer);
     };
-    clearInterval();
+
     currentQuestionIndex++;
     if(currentQuestionIndex === quizQuestions.length){
         quizEnd();
     }else{ 
        getQuestions(); 
     }
+};
+  
+//how to enable resultTimer each time we call back get questions?
+function resultHandler(){ 
+    setTimeout(function(){displayAnswer.setAttribute('class','hide')},3000);
+    clearTimeout();
 };
 
 function quizEnd() {
