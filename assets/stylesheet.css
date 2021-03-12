@@ -1,29 +1,15 @@
-h1, h2, h3, p { font-family: 'Verdana';}
 
-
-#timer {
-width: 400px;
-background-color: rgb(221, 5, 59) ;
-color:rgb(205, 225, 228);
-border: none;
-width: 50px;
-padding: 12px 22px;
-margin: 12px 0;
-text-align: center;
-display: block;
-font-size: 15px;
-
+h1, h2, h3, p, li { 
+    font-family: 'Verdana';
+    text-align: center;
 }
-
-
 
 .hide{
     display:none;
 }
 
-.option {
+.option, #timer, button {
     background-color: rgb(221, 5, 59) ;
-    width: 400px;
     color:rgb(205, 225, 228);
     border: none;
     padding: 12px 22px;
@@ -32,4 +18,58 @@ font-size: 15px;
     display: block;
     font-size: 15px;
 }
+ul {
+    list-style: none;
+}
+
+#timer {
+    width:100px
+}
+
+button , #innitials{
+    width: 200px;
+   
+}
+
+.option {   
+    width: 400px;
+}
+
+header {
+   display:flex;
+   justify-content: center;
+}
+
+
+.options {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+
+.end-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 

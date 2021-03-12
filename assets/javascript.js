@@ -1,5 +1,37 @@
+//arrays
+var quizQuestions = [{
+    Title: "How can you define a variable so it's value stays the same?",
+    Options: ["var", "let", "const", "if"],
+    Answer: "const",
+},
+{
+    Title: "Which method allows you to select an item in your html file",
+    Options: [".querySelector", ".addTo", ".setInterval", ".setHTML"],
+    Answer: ".querySelector",
+},
+{
+    Title: "Choose the most appropiate way to declare two statements are identical to each other",
+    Options: ["=", "!=", "<=>", "==="],
+    Answer: "===",
+},
+{
+    Title: "What does API stands for?",
+    Options: ["Application Programing Interface","Applied Programs Interexchange","Appliying Programing to the Internet ","As Program Intents"],
+    Answer: "Application Programing Interface",
+},
+{
+    Title: "What symbol do we use to call back functions?",
+    Options: [" # "," $() "," () "," @() "],
+    Answer: " () ",
+},
+{
+    Title: "Choose the statement that most resembles the definition of 'boolean' ",
+    Options: [" if/or "," while/else "," true/false "," valid/invalid "],
+    Answer: " true/false ",
+},
+];
 //variables
-var timer;
+var timer = quizQuestions.length * 5;
 var currentQuestionIndex = 0;
 var clock;
 
@@ -17,45 +49,9 @@ var displayAnswer = document.querySelector('#question-answers');
 
 var submitScore = document.querySelector('#submit')
 
-//arrays
-var quizQuestions = [{
-    Title: "How can you define a variable so it's value stays the same?",
-    Options: ["var", "let", "const", "if"],
-    Answer: "const",
-},
-{
-    Title: "Which method allows you to select an item in your html file",
-    Options: [".querySelector", ".addTo", ".setInterval", ".setHTML"],
-    Answer: ".querySelector",
-},
-{
-    Title: "Choose the most appropiate way to declare two statements are identical to each other",
-    Options: ["=", "!=", "<=>", "==="],
-    Answer: "===",
-
-},
-{
-    Title: "What does API stands for?",
-    Options: ["Application Programing Interface","Applied Programs Interexchange","Appliying Programing to the Internet ","As Program Intents"],
-    Answer: "Application Programing Interface",
-},
-{
-    Title: "What symbol do we use to call back functions?",
-    Options: [" # "," $() "," () "," @() "],
-    Answer: " () ",
-},
-{
-    Title: "Choose the statement that most resembles the definition of 'boolean' ",
-    Options: [" if/or "," while/else "," true/false "," valid/invalid "],
-    Answer: " true/false ",
-},
-
-
-];
-//event listeners
+//functions
 startQuizButton.addEventListener('click', startQuiz);
 
-//functions
 function startQuiz() { 
     startScreen.setAttribute('class', 'hide');
     quizScreen.removeAttribute('class', 'hide');
@@ -124,7 +120,6 @@ function OptionClick() {
     }
 };
   
-//how to enable resultTimer each time we call back get questions?
 function resultHandler(){ 
     setTimeout(function(){displayAnswer.setAttribute('class','hide')},1500);
     clearTimeout();
@@ -148,7 +143,6 @@ function quizEnd() {
     lastPlayer.textContent= localStorage.getItem('last-score', timer);
 };
 
-
 submitScore.addEventListener('click',function(event){
     event.preventDefault();
 
@@ -161,6 +155,7 @@ submitScore.addEventListener('click',function(event){
         localStorage.setItem('player-innitials', innitials);
         localStorage.setItem('last-score',timer);
     };
+    
 });
 
 replayQuizButton.addEventListener('click',startQuiz);
