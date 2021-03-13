@@ -136,7 +136,14 @@ submitScore.addEventListener('click',function(event){
     var innitials = document.querySelector('#innitials').value;
     if(innitials === ''){
         alert('Nope. Innitials cannot be blank!');
-    }else{
+    }
+    if(innitials.lenght >3){
+        alert('Please enter up to 3 innitials')
+    }
+    if(innitials !== isNaN){
+        alert('Please enter your innitials using Letters')
+    }
+    else{
         alert('Success! Your score is now saved!');
         localStorage.setItem('player-innitials', innitials);
         localStorage.setItem('last-score',timer);
