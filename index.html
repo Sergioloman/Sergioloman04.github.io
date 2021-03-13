@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/brain_1f9e0.png"/>
     <link rel="stylesheet" href="./assets/stylesheet.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
     <title>JS Quiz</title>
 </head>
 
@@ -16,12 +19,12 @@
     <main>
         <section id='start-screen' class='start-screen' >
             <h1>Java Script Quiz</h1>
-            <h3>Get as many right answers before the time runs out!.</h2>
-            <h3>Rules:</h3>
+            <h3>Get as many right answers before the time runs out!</h2>
+            <h2>Rules:</h3>
                 <ul>
                     <li><strong>Right</strong> answers give you +5 seconds on your timer !</li>
                     <li><strong>Wrong</strong> answers cost -5 seconds on your timer!</li>
-                    <li><strong>Save your score</strong>, and keep playing until you reach the highest score!</li>
+                    <li><strong>Save</strong> your score, and keep playing until you reach the highest score!</li>
                 </ul>
             <button id='start-button'>Lets Get Started!</button>
         </section>
@@ -35,7 +38,7 @@
         <section id='end-screen' class='hide'>
             <div class='end-section timeup-subsection'>
                 <h2>You have completed the quiz</h2>
-                <p>Your score is <span id="player-score"></span> seconds!</p>
+                <p>Your final score is <span id="player-score"></span> seconds!</p>
             </div>
             <div class='end-section input-subsection'>
                 <h3>Enter your innitials</h3>

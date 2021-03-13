@@ -1,6 +1,8 @@
 
-h1, h2, h3, p, li { 
-    font-family: 'Verdana';
+* { 
+    
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 108%;
     text-align: center;
 }
 
@@ -10,13 +12,12 @@ h1, h2, h3, p, li {
 
 .option, #timer, button {
     background-color: rgb(221, 5, 59) ;
-    color:rgb(205, 225, 228);
+    color:rgb(225, 245, 246);
     border: none;
-    padding: 12px 22px;
-    margin: 12px 0;
+    padding: 15px 25px;
+    margin: 15px 0;
     text-align: center;
     display: block;
-    font-size: 15px;
 }
 ul {
     list-style: none;
