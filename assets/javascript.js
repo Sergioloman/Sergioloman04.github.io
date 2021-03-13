@@ -34,7 +34,6 @@ var quizQuestions = [{
 var timer = quizQuestions.length * 5;
 var currentQuestionIndex = 0;
 var clock;
-var scores = [];
 
 var quizScreen = document.querySelector('#quiz-screen');
 var startScreen = document.querySelector('#start-screen');
@@ -136,9 +135,9 @@ submitScore.addEventListener('click',function(event){
     event.preventDefault();
     var innitials = document.querySelector('#innitials').value;
     if(innitials === ''){
-        alert('Innitials cannot be blank');
+        alert('Nope. Innitials cannot be blank!');
     }else{
-        alert('Success! Welcome to the Hall of Fame!');
+        alert('Success! Your score is now saved!');
         localStorage.setItem('player-innitials', innitials);
         localStorage.setItem('last-score',timer);
     };
@@ -159,7 +158,7 @@ function displayHighScores(){
 function clearScores(){
     localStorage.clear();
     location.reload();
-    alert('Play history has been deleted :(');
+    alert('Your play history has been deleted :(');
 }
 
 startQuizButton.addEventListener('click', startQuiz);
