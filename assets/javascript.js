@@ -53,6 +53,8 @@ var submitScore = document.querySelector('#submit');
 
 var clear = document.querySelector('#clear-scores');
 
+var playerInnitials = document.querySelector('#innitials')
+var highScore = document.querySelector('#player-score')
 
 
 //functions
@@ -123,17 +125,24 @@ function quizEnd() {
     endScreen.removeAttribute('class', 'hide');
     quizScreen.setAttribute('class', 'hide');
     scoreScreen.setAttribute('class', 'hide');
-    
     clearInterval(clock);
     currentQuestionIndex=0; 
-    var clearInnitials = document.querySelector('#innitials')
-    clearInnitials.value= "";
-
+    playerInnitials.value= "";
     quizTimerUpdate.textContent = 'Time is up!'; 
-
-    var highScore = document.querySelector('#player-score')
     highScore.textContent= timer;
 };
+
+submitScore.addEventListener('click',function(event){
+    event.preventDefault();
+    var innitials = document.querySelector('#innitials').value;
+    if(innitials === ''){
+        alert('Innitials cannot be blank');
+    }else{
+        alert('Success! Welcome to the Hall of Fame!');
+        localStorage.setItem('player-innitials', innitials);
+        localStorage.setItem('last-score',timer);
+    };
+});
 
 function displayHighScores(){
     scoreScreen.removeAttribute('class','hide');
@@ -152,7 +161,7 @@ function clearScores(){
     location.reload();
     alert('Play history has been deleted :(');
 }
-//event listeners
+
 startQuizButton.addEventListener('click', startQuiz);
 
 submitScore.addEventListener('click', displayHighScores);
@@ -161,17 +170,5 @@ clear.addEventListener('click',clearScores)
 
 replayQuizButton.addEventListener('click',startQuiz);
 
-submitScore.addEventListener('click',function(event){
-    event.preventDefault();
-    var innitials = document.querySelector('#innitials').value;
-    if(innitials === ''){
-        alert('Innitials cannot be blank');
-       // quizEnd();how to bounce back?nol
-        
-    }else{
-        alert('Success! Welcome to the Hall of Fame!');
-        localStorage.setItem('player-innitials', innitials);
-        localStorage.setItem('last-score',timer);
-    };
-});
+
 
