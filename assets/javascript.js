@@ -53,9 +53,9 @@ var submitScore = document.querySelector('#submit');
 
 var clear = document.querySelector('#clear-scores');
 
-//functions
-startQuizButton.addEventListener('click', startQuiz);
 
+
+//functions
 function startQuiz() { 
     startScreen.setAttribute('class', 'hide');
     quizScreen.removeAttribute('class', 'hide');
@@ -65,8 +65,6 @@ function startQuiz() {
     timer = 25;
     clock = setInterval(countdownTimer,1000);
     getQuestions();
-
-
 };
 
 function countdownTimer() {
@@ -124,26 +122,24 @@ function resultHandler(){
 function quizEnd() {
     endScreen.removeAttribute('class', 'hide');
     quizScreen.setAttribute('class', 'hide');
+    scoreScreen.setAttribute('class', 'hide');
+    
     clearInterval(clock);
     currentQuestionIndex=0; 
+    var clearInnitials = document.querySelector('#innitials')
+    clearInnitials.value= "";
+
     quizTimerUpdate.textContent = 'Time is up!'; 
 
     var highScore = document.querySelector('#player-score')
     highScore.textContent= timer;
-
-    
-
-    // var lastScore = document.querySelector('#last-player-innitials');
-    // lastScore.textContent = localStorage.getItem('player-innitials', innitials);
-
-    // var lastPlayer = document.querySelector('#last-high-score');
-    // lastPlayer.textContent= localStorage.getItem('last-score', timer);
 };
 
 function displayHighScores(){
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
+
     var lastScore = document.querySelector('#last-player-innitials');
     lastScore.textContent = localStorage.getItem('player-innitials', innitials);
 
@@ -154,25 +150,28 @@ function displayHighScores(){
 function clearScores(){
     localStorage.clear();
     location.reload();
+    alert('Play history has been deleted :(');
 }
-
-submitScore.addEventListener('click',function(event){
-    event.preventDefault();
-    var innitials = document.querySelector('#innitials').value;
-    if(innitials === ''){
-        alert('error! Innitials cannot be blank');
-    }else{
-        alert('success! You have entered the scoreboard!');
-        localStorage.setItem('player-innitials', innitials);
-        localStorage.setItem('last-score',timer);
-    };
-});
-
-
+//event listeners
+startQuizButton.addEventListener('click', startQuiz);
 
 submitScore.addEventListener('click', displayHighScores);
 
 clear.addEventListener('click',clearScores)
 
 replayQuizButton.addEventListener('click',startQuiz);
+
+submitScore.addEventListener('click',function(event){
+    event.preventDefault();
+    var innitials = document.querySelector('#innitials').value;
+    if(innitials === ''){
+        alert('Innitials cannot be blank');
+       // quizEnd();how to bounce back?nol
+        
+    }else{
+        alert('Success! Welcome to the Hall of Fame!');
+        localStorage.setItem('player-innitials', innitials);
+        localStorage.setItem('last-score',timer);
+    };
+});
 

@@ -1,10 +1,13 @@
 
 * { 
-    
+    /*background: black;*/
     font-family: 'Pathway Gothic One', sans-serif;
+    /*color:rgb(225, 245, 246);*/
     font-size: 108%;
     text-align: center;
 }
+
+
 
 .hide{
     display:none;
