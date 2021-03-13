@@ -21,8 +21,8 @@ var quizQuestions = [{
 },
 {
     Title: "What symbol do we use to call back functions?",
-    Options: [" # "," $() "," () "," @() "],
-    Answer: " () ",
+    Options: [" # "," $( ) "," ( ) "," @( ) "],
+    Answer: " ( ) ",
 },
 {
     Title: "Choose the statement that most resembles the definition of 'boolean' ",
@@ -80,10 +80,8 @@ function countdownTimer() {
 
 function getQuestions() {
         var currentQuestion = quizQuestions[currentQuestionIndex];
-        console.log(currentQuestion);
         var questionTitle = document.querySelector('.question-title');
         questionTitle.textContent = currentQuestion.Title;
-        console.log(currentQuestion.Title);
         var questionOptions= document.querySelector ('.options');
         questionOptions.innerHTML = "";
         currentQuestion.Options.forEach(function(option){
@@ -99,22 +97,15 @@ function getQuestions() {
 function OptionClick() {    
     if(this.value === quizQuestions[currentQuestionIndex].Answer){
         
-        console.log('correct!');
-        //alert("Nice! +5 seconds to the timer! ");
         displayAnswer.textContent = "Nice! +5 seconds to the timer!";
         resultHandler()
         displayAnswer.removeAttribute('class','hide');
         timer += 5;
-        console.log(timer);
     }else{
-        
-        console.log('wrong!');
-        //alert("Wrong! -5 seconds to the timer")
         displayAnswer.textContent = "Wrong! -5 seconds to the timer";
         resultHandler();
         displayAnswer.removeAttribute('class','hide');
         timer -= 5;
-        console.log(timer);
     };
 
     currentQuestionIndex++;
@@ -136,36 +127,38 @@ function quizEnd() {
     clearInterval(clock);
     currentQuestionIndex=0; 
     quizTimerUpdate.textContent = 'Time is up!'; 
-    console.log(timer); 
 
     var highScore = document.querySelector('#player-score')
     highScore.textContent= timer;
 
-    var lastScore = document.querySelector('#last-player-innitials');
-    lastScore.textContent = localStorage.getItem('player-innitials', innitials);
+    
 
-    var lastPlayer = document.querySelector('#last-high-score');
-    lastPlayer.textContent= localStorage.getItem('last-score', timer);
+    // var lastScore = document.querySelector('#last-player-innitials');
+    // lastScore.textContent = localStorage.getItem('player-innitials', innitials);
 
+    // var lastPlayer = document.querySelector('#last-high-score');
+    // lastPlayer.textContent= localStorage.getItem('last-score', timer);
 };
 
 function displayHighScores(){
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
+    var lastScore = document.querySelector('#last-player-innitials');
+    lastScore.textContent = localStorage.getItem('player-innitials', innitials);
 
+    var lastPlayer = document.querySelector('#last-high-score');
+    lastPlayer.textContent= localStorage.getItem('last-score', timer);
 }
 
 function clearScores(){
-    clear.addEventListener('click',clearScores)
+    localStorage.clear();
+    location.reload();
 }
-
 
 submitScore.addEventListener('click',function(event){
     event.preventDefault();
-
     var innitials = document.querySelector('#innitials').value;
-
     if(innitials === ''){
         alert('error! Innitials cannot be blank');
     }else{
@@ -173,10 +166,13 @@ submitScore.addEventListener('click',function(event){
         localStorage.setItem('player-innitials', innitials);
         localStorage.setItem('last-score',timer);
     };
-    
 });
 
+
+
 submitScore.addEventListener('click', displayHighScores);
+
+clear.addEventListener('click',clearScores)
 
 replayQuizButton.addEventListener('click',startQuiz);
 
