@@ -34,10 +34,12 @@ var quizQuestions = [{
 var timer = quizQuestions.length * 5;
 var currentQuestionIndex = 0;
 var clock;
+var scores = [];
 
 var quizScreen = document.querySelector('#quiz-screen');
 var startScreen = document.querySelector('#start-screen');
 var endScreen = document.querySelector('#end-screen');
+var scoreScreen = document.querySelector('#score-screen')
 
 var quizTimerUpdate = document.querySelector('#timer');
 var quizTimerScreen = document.querySelector('#timer-screen');
@@ -47,7 +49,9 @@ var replayQuizButton = document.querySelector('#replay-button');
 
 var displayAnswer = document.querySelector('#question-answers');
 
-var submitScore = document.querySelector('#submit')
+var submitScore = document.querySelector('#submit');
+
+var clear = document.querySelector('#clear-scores');
 
 //functions
 startQuizButton.addEventListener('click', startQuiz);
@@ -57,6 +61,7 @@ function startQuiz() {
     quizScreen.removeAttribute('class', 'hide');
     quizTimerScreen.removeAttribute('class', 'hide');
     endScreen.setAttribute('class','hide');
+    scoreScreen.setAttribute('class','hide');
     timer = 25;
     clock = setInterval(countdownTimer,1000);
     getQuestions();
@@ -141,7 +146,20 @@ function quizEnd() {
 
     var lastPlayer = document.querySelector('#last-high-score');
     lastPlayer.textContent= localStorage.getItem('last-score', timer);
+
 };
+
+function displayHighScores(){
+    scoreScreen.removeAttribute('class','hide');
+    endScreen.setAttribute('class','hide');
+    quizTimerScreen.setAttribute('class','hide');
+
+}
+
+function clearScores(){
+    clear.addEventListener('click',clearScores)
+}
+
 
 submitScore.addEventListener('click',function(event){
     event.preventDefault();
@@ -157,6 +175,8 @@ submitScore.addEventListener('click',function(event){
     };
     
 });
+
+submitScore.addEventListener('click', displayHighScores);
 
 replayQuizButton.addEventListener('click',startQuiz);
 
