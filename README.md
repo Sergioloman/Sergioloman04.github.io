@@ -16,17 +16,17 @@ Users are able to see their score at the end of the game and compare it to their
 
 We are mostly using DOM methods here, as we are focused on functionality rather than looks.
 
-Our HTML is divided into sections:
+Our application is divided into sections. Each hidden or visible thanks to its corresponding functions.
 
-**Start screen** = holds the start button and sets timer countdown.
+**Start screen** = Holds the start button and sets timer countdown.
 
-**Quiz screen** = displays all the questions with the aid of the **OptionClick** function, which displays the correct andswer and adds time to the timer.
+**Quiz screen** = Displays all the questions with the aid of the **OptionClick** function, which displays the correct andswer and adds time to the timer.
 
-**Timer screen** =  this the subsection that holds the timer display. Its value acts as a score and its displayed on the End Screen.
+**Timer screen** =  This the subsection that holds the timer display. Its value acts as a score and its displayed on the End Screen.
 
-**End screen** = displays the final score of the player and promts them to submit their innitials. The submit button saves those innitials and score to localStorage.
+**End screen** = Displays the final score of the player and promts them to submit their innitials. The submit button saves those innitials and score to localStorage.
 
-**Score screen** = Here we display the users past score. User has the option to start the game again or clear the localStorage and returning to the main screen,
+**Score screen** = Here we display the users past score. User has the option to start the game again or clear the localStorage and returning to the main screen.
 __________________________
 
 
