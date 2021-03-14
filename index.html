@@ -28,6 +28,8 @@
                 <li><strong>Save</strong> your score, and keep playing until you reach the highest score!</li>
             </ul>
             <button id='start-button'>Lets Get Started!</button>
+            <br>
+            <button id='display-scores'>High Scorea</button>
         </section>
 
         <section id='quiz-screen' class='hide'>
@@ -52,12 +54,12 @@
         <section id='score-screen' class='hide'>
             <div class='end-section'>
                 <button id='replay-button'>Play again!</button>
-                <h2>Previous Record</h2>
-                
-                <div id='high-scores'>
-                    <p>Player: <span id="last-player-innitials"></span></p>
-                    <p>Score: <span id="last-high-score"></span></p>
-                </div>
+                <h2>Hall of Fame</h2>
+                   
+                <div>
+                    <h4>Player    ||    Score </h4>
+                    <div id="high-scores"></div>
+                </div>              
                 
                 <button id='clear-scores'>Clear scores</button>
             </div>

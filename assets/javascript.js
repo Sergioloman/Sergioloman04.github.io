@@ -118,6 +118,7 @@ function OptionClick() {
 function resultHandler(){ 
     setTimeout(function(){displayAnswer.setAttribute('class','hide')},1500);
     clearTimeout();
+
 };
 
 function quizEnd() {
@@ -160,28 +161,19 @@ function displayHighScores(){
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
-
+    //here is the div so where we are going to push our ul/lis etcs
     var scoresContainer = document.querySelector('#high-scores');
-    
-    console.log(scoresArray)
 
     for (var i = 0; i < scoresArray.length; i++){
-        
 
-        var innitialsItem = document.createElement('p');
-        innitialsItem.setAttribute('class','user-innitials');
-        innitialsItem.textContent= scoresArray[i].innitials;
-        innitialsItem = scoresContainer.appendChild(innitialsItem);
-        console.log(scoresArray[i].innitials);
-        
-        var scoresItem = document.createElement('p');
-        scoresItem.setAttribute('class','user-scores');
-        scoresItem.textContent = scoresArray[i].timer;
-        scoresItem = scoresContainer.appendChild(scoresItem);
-        console.log(scoresArray[i].timer); 
-            
+        var resultsDiv = document.createElement('div')
+        resultsDiv.className = 'container-div'
+        resultsDiv.innerHTML = `
+            <p class='left'>${scoresArray[i].innitials}</p> 
+            <p class='right'>${scoresArray[i].timer}</p>
+        `;
+        scoresContainer.appendChild(resultsDiv);  
     }
-    
 }
 submitScore.addEventListener('click',scoreHandler)
 
