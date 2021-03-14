@@ -143,7 +143,7 @@ function scoreHandler (){
     if(innitials === '' || innitials.length > 3 ){
         alert('Nope, you must enter up to 3 characters');
         quizEnd()
-        ////how can i make it so it goes back to quizEnd?           
+        ////how can i make it so it doesnt move to displayHighscores??           
     }else{
         alert('Success! Your score is now saved!');
     
@@ -157,15 +157,15 @@ function scoreHandler (){
     localStorage.setItem('playerinfo',JSON.stringify(scoresArray));
     
 }
-//this function renders ( or should render) results on the page need to pass in an array to render.
+
 function displayHighScores(){
-    startScreen.setAttribute('class','hide');
+    startScreen.setAttribute('class','hide')
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
-    //here is the div so where we are going to push our ul/lis etcs
+    
     var scoresContainer = document.querySelector('#high-scores');
-
+// how can i prevent it from iterating over itself with every entry?
     for (var i = 0; i < scoresArray.length; i++){
 
         var resultsDiv = document.createElement('div')
@@ -175,7 +175,9 @@ function displayHighScores(){
             <p class='right'>${scoresArray[i].timer}</p>
         `;
         scoresContainer.appendChild(resultsDiv);  
+        
     }
+    return
 }
 
 highScoresButton.addEventListener('click', displayHighScores)
