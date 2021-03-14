@@ -131,26 +131,31 @@ function quizEnd() {
     highScore.textContent= timer;
 };
 
-submitScore.addEventListener('click',function(event){
-    event.preventDefault();
-    var innitials = document.querySelector('#innitials').value;
-    if(innitials === ''){
-        alert('Nope. Innitials cannot be blank!');
-    }
-    if(innitials.lenght >3){
-        alert('Please enter up to 3 innitials')
-    }
-    if(innitials !== isNaN){
-        alert('Please enter your innitials using Letters')
-    }
-    else{
-        alert('Success! Your score is now saved!');
-        localStorage.setItem('player-innitials', innitials);
-        localStorage.setItem('last-score',timer);
+submitScore.addEventListener('click',scoreHandler)
+
+function scoreHandler (){
+       
+        var innitials = document.querySelector('#innitials').value;
+        if(innitials === '' || innitials.length > 3 )
+        {
+            
+            alert('Nope, you must enter up to 3 characters');
+            quizEnd()
+            
+            
+        }else{
+            alert('Success! Your score is now saved!');
+            localStorage.setItem('player-innitials', innitials);
+            localStorage.setItem('last-score',timer);
+        };
     };
-});
+
+
+
+
 
 function displayHighScores(){
+    
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
