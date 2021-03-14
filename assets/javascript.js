@@ -131,41 +131,67 @@ function quizEnd() {
     highScore.textContent= timer;
 };
 
-submitScore.addEventListener('click',scoreHandler)
+var scoresArray = JSON.parse(localStorage.getItem('playerinfo')) || [];
+
+if (JSON.parse(localStorage.getItem('playerinfo')) !== null){
+    scoresArray = JSON.parse(localStorage.getItem('playerinfo'));}
 
 function scoreHandler (){
-       
-        var innitials = document.querySelector('#innitials').value;
-        if(innitials === '' || innitials.length > 3 )
-        {
-            
-            alert('Nope, you must enter up to 3 characters');
-            quizEnd()
-            
-            
-        }else{
-            alert('Success! Your score is now saved!');
-            localStorage.setItem('player-innitials', innitials);
-            localStorage.setItem('last-score',timer);
-        };
+    var innitials = document.querySelector('#innitials').value;
+    if(innitials === '' || innitials.length > 3 ){
+        alert('Nope, you must enter up to 3 characters');
+        quizEnd()
+        ////how can i make it so it goes back to quizEnd?           
+    }else{
+        alert('Success! Your score is now saved!');
+        
+        //this was working for a minute
+        //localStorage.setItem('player-innitials', innitials);
+        //localStorage.setItem('last-score',timer);
     };
-
-
-
-
-
-function displayHighScores(){
+    var playerInformation = {
+        innitials : innitials,
+        timer : timer,
+    }
     
+    scoresArray.push(playerInformation);
+    localStorage.setItem('playerinfo',JSON.stringify(scoresArray));
+    
+}
+//this function renders ( or should render) results on the page need to pass in an array to render.
+function displayHighScores(){
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
+    //This was working for a minute
+    // var lastScore = document.querySelector('#last-player-innitials');
+    // lastScore.textContent = localStorage.getItem('player-innitials', innitials);
+    // var lastPlayer = document.querySelector('#last-high-score');
+    // lastPlayer.textContent= localStorage.getItem('last-score', timer); 
+   
 
-    var lastScore = document.querySelector('#last-player-innitials');
-    lastScore.textContent = localStorage.getItem('player-innitials', innitials);
+    var scoresContainer = document.querySelector('#high-scores');
+    console.log(scoresArray)
 
-    var lastPlayer = document.querySelector('#last-high-score');
-    lastPlayer.textContent= localStorage.getItem('last-score', timer);
+    for (i = 0; i < scoresArray.lenght; i++){
+        
+        var innitialsItem = document.createElement('p');
+        innitialsItem.setAttribute('class','user-innitials');
+        innitialsItem.textContent(scoresArray[i].innitials);
+        innitialsItem = scoresContainer.appendChild(innitialsItem);
+        console.log(scoresArray[i].innitials)
+        
+        var scoresItem = document.createElement('p');
+        scoresItem.setAttribute('class','user-scores');
+        scoresItem.textContent(scoresArray[i].timer);
+        scoresItem = scoresContainer.appendChild(scoresItem);
+        console.log(scoresArray[i].timer)
+        
+            
+    }
+    
 }
+submitScore.addEventListener('click',scoreHandler)
 
 function clearScores(){
     localStorage.clear();
