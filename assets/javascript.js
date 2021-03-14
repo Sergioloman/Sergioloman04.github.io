@@ -143,20 +143,21 @@ function scoreHandler (){
     var innitials = document.querySelector('#innitials').value;
 
     if(innitials === '' || innitials.length > 4 ){
-        alert('You have entered an invalid name to the scoreboar');
+        alert('Invalid name x.x . You cannot enter the scoreboar :(');
         quizEnd()
                 
     }else{
-        alert('Success! Your score is now saved!');
+        alert('Success! Your score is now saved! :)');
     
+        var playerInformation = {
+            innitials : innitials,
+            timer : timer,
+        }
+        
+        scoresArray.push(playerInformation);
+        localStorage.setItem('playerinfo',JSON.stringify(scoresArray));
     };
-    var playerInformation = {
-        innitials : innitials,
-        timer : timer,
-    }
     
-    scoresArray.push(playerInformation);
-    localStorage.setItem('playerinfo',JSON.stringify(scoresArray));
 }
 
 function displayHighScores(){
