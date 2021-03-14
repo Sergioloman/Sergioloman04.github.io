@@ -52,9 +52,10 @@ var submitScore = document.querySelector('#submit');
 
 var clear = document.querySelector('#clear-scores');
 
-var playerInnitials = document.querySelector('#innitials')
-var highScore = document.querySelector('#player-score')
+var playerInnitials = document.querySelector('#innitials');
+var highScore = document.querySelector('#player-score');
 
+var highScoresButton = document.querySelector('#display-scores');
 
 //functions
 function startQuiz() { 
@@ -158,6 +159,7 @@ function scoreHandler (){
 }
 //this function renders ( or should render) results on the page need to pass in an array to render.
 function displayHighScores(){
+    startScreen.setAttribute('class','hide');
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
@@ -175,6 +177,9 @@ function displayHighScores(){
         scoresContainer.appendChild(resultsDiv);  
     }
 }
+
+highScoresButton.addEventListener('click', displayHighScores)
+
 submitScore.addEventListener('click',scoreHandler)
 
 function clearScores(){
