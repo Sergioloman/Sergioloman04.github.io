@@ -130,7 +130,7 @@ function quizEnd() {
     quizTimerUpdate.textContent = 'Time is up!'; 
     highScore.textContent= timer;
 };
-
+//this fetches from local storage.
 var scoresArray = JSON.parse(localStorage.getItem('playerinfo')) || [];
 
 if (JSON.parse(localStorage.getItem('playerinfo')) !== null){
@@ -144,10 +144,7 @@ function scoreHandler (){
         ////how can i make it so it goes back to quizEnd?           
     }else{
         alert('Success! Your score is now saved!');
-        
-        //this was working for a minute
-        //localStorage.setItem('player-innitials', innitials);
-        //localStorage.setItem('last-score',timer);
+    
     };
     var playerInformation = {
         innitials : innitials,
@@ -163,30 +160,25 @@ function displayHighScores(){
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
-    //This was working for a minute
-    // var lastScore = document.querySelector('#last-player-innitials');
-    // lastScore.textContent = localStorage.getItem('player-innitials', innitials);
-    // var lastPlayer = document.querySelector('#last-high-score');
-    // lastPlayer.textContent= localStorage.getItem('last-score', timer); 
-   
 
     var scoresContainer = document.querySelector('#high-scores');
+    
     console.log(scoresArray)
 
-    for (i = 0; i < scoresArray.lenght; i++){
+    for (var i = 0; i < scoresArray.length; i++){
         
+
         var innitialsItem = document.createElement('p');
         innitialsItem.setAttribute('class','user-innitials');
-        innitialsItem.textContent(scoresArray[i].innitials);
+        innitialsItem.textContent= scoresArray[i].innitials;
         innitialsItem = scoresContainer.appendChild(innitialsItem);
-        console.log(scoresArray[i].innitials)
+        console.log(scoresArray[i].innitials);
         
         var scoresItem = document.createElement('p');
         scoresItem.setAttribute('class','user-scores');
-        scoresItem.textContent(scoresArray[i].timer);
+        scoresItem.textContent = scoresArray[i].timer;
         scoresItem = scoresContainer.appendChild(scoresItem);
-        console.log(scoresArray[i].timer)
-        
+        console.log(scoresArray[i].timer); 
             
     }
     
