@@ -132,18 +132,20 @@ function quizEnd() {
     quizTimerUpdate.textContent = 'Time is up!'; 
     highScore.textContent= timer;
 };
-//this fetches from local storage.
+
 var scoresArray = JSON.parse(localStorage.getItem('playerinfo')) || [];
 
 if (JSON.parse(localStorage.getItem('playerinfo')) !== null){
     scoresArray = JSON.parse(localStorage.getItem('playerinfo'));}
 
 function scoreHandler (){
+    document.querySelector('#high-scores').innerHTML = "";
     var innitials = document.querySelector('#innitials').value;
-    if(innitials === '' || innitials.length > 3 ){
-        alert('Nope, you must enter up to 3 characters');
+
+    if(innitials === '' || innitials.length > 4 ){
+        alert('You have entered an invalid name to the scoreboar');
         quizEnd()
-        ////how can i make it so it doesnt move to displayHighscores??           
+                
     }else{
         alert('Success! Your score is now saved!');
     
@@ -155,17 +157,18 @@ function scoreHandler (){
     
     scoresArray.push(playerInformation);
     localStorage.setItem('playerinfo',JSON.stringify(scoresArray));
-    
 }
 
 function displayHighScores(){
+    console.log('displayHighScores-run');
     startScreen.setAttribute('class','hide')
     scoreScreen.removeAttribute('class','hide');
     endScreen.setAttribute('class','hide');
     quizTimerScreen.setAttribute('class','hide');
     
     var scoresContainer = document.querySelector('#high-scores');
-// how can i prevent it from iterating over itself with every entry?
+
+    console.log(scoresArray);
     for (var i = 0; i < scoresArray.length; i++){
 
         var resultsDiv = document.createElement('div')
@@ -175,9 +178,7 @@ function displayHighScores(){
             <p class='right'>${scoresArray[i].timer}</p>
         `;
         scoresContainer.appendChild(resultsDiv);  
-        
     }
-    return
 }
 
 highScoresButton.addEventListener('click', displayHighScores)
