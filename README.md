@@ -26,7 +26,7 @@ Our application is divided into sections. Each hidden or visible thanks to its c
 
 **End screen** = Displays the final score of the player and promts them to submit their innitials. The submit button saves those innitials and score to localStorage.
 
-**Score screen** = Here we display the users past score. User has the option to start the game again or clear the localStorage and returning to the main screen.
+**Score screen** = Here we display all of the users past scores. User has the option to start the game again or clear the localStorage and returning to the main screen.
 __________________________
 
 
